@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application id="dubbo-consumer" name="dubbo-consumer"/>
+    <dubbo:registry protocol="zookeeper" address="192.168.239.148:2181"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--调用远程服务，注入spring容器的bean-->
+    <dubbo:reference id="userService" interface="top.simba1949.service.UserService" timeout="6000" check="false"/>
+
+</beans>

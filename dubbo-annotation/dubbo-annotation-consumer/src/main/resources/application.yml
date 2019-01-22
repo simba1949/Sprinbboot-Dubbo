@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: springboot-dubbo-consumer
+dubbo:
+  application:
+    id: dubbo-consumer
+    name: dubbo-consumer
+  registry:
+    address: zookeeper://192.168.239.148:2181
+  protocol:
+    name: dubbo
+    port: 20800
+  consumer:
+    check: false

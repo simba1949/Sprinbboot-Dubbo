@@ -1,0 +1,19 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: springboot-dubbo-provider
+
+# dubbo 配置
+dubbo:
+  application:
+    id: dubbo-provider
+    name: dubbo-provider
+  # dubbo 注册中心地址
+  registry:
+    address: zookeeper://192.168.239.148:2181
+  # 服务提供者的协议名和端口
+  protocol:
+    server: true
+    name: dubbo
+    port: 20800

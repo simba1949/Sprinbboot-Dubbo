@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--当前应用名称，用于注册中心计算应用间依赖关系-->
+    <dubbo:application id="dubbo-provider" name="dubbo-provider"/>
+    <!--注册中心配置-->
+    <dubbo:registry protocol="zookeeper" address="192.168.239.148:2181"/>
+    <!--服务提供者协议配置,
+        端口配置：dubbo协议缺省端口为20880，rmi协议缺省端口为1099，http和hessian协议缺省端口为80；
+        如果没有配置port，则自动采用默认端口，如果配置为-1，则会分配一个没有被占用的端口。-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--定义 SPRING 容器中 Bean -->
+    <bean id="userService" class="top.simba1949.service.impl.UserServiceImpl"></bean>
+    <!--dubbo 暴露对外接口-->
+    <dubbo:service interface="top.simba1949.service.UserService" ref="userService"/>
+</beans>
